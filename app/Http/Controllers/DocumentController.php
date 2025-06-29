@@ -266,12 +266,16 @@ class DocumentController extends Controller
     }
 
     public function stats()
-    {
-        $totalDocuments = Document::count();
-        $sharedDocuments = Document::where('is_shared', true)->count();
+{
+    $userId = auth()->id(); 
 
-        return view('documents.stats', compact('totalDocuments', 'sharedDocuments'));
-    }
+    $totalDocuments = Document::where('user_id', $userId)->count();
+    $sharedDocuments = Document::where('user_id', $userId)->where('is_shared', true)->count();
+    $archivedDocuments = Document::where('user_id', $userId)->where('is_archived', true)->count();
+
+    return view('documents.stats', compact('totalDocuments', 'sharedDocuments', 'archivedDocuments'));
+}
+
 
     public function adminStats()
     {
@@ -311,4 +315,26 @@ class DocumentController extends Controller
 
         return Storage::download($path, 'texte_extrait_' . $document->id . '.txt');
     }
+
+    public function mesArchives()
+{
+    $user = auth()->user();
+    $documents = Document::where('user_id', $user->id)
+                         ->where('is_archived', true)
+                         ->get();
+
+    return view('documents.mes_archives', compact('documents'));
+}
+
+public function desarchiver($id)
+{
+    $document = Document::where('id', $id)
+                        ->where('user_id', auth()->id())
+                        ->firstOrFail();
+
+    $document->is_archived = false;
+    $document->save();
+
+    return redirect()->route('documents.mes_archives')->with('success', 'Document désarchivé avec succès.');
+}
 }

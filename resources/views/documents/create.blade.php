@@ -75,38 +75,29 @@
 </head>
 <body>
 <div class="container">
-    <h1>Téléverser un Document</h1>
+    
+   <h1>Téléverser un Document</h1>
 
-    <form action="{{ route('documents.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+<form action="{{ route('documents.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
 
-        <label for="titre">Titre :</label>
-        <input type="text" id="titre" name="titre" required>
+    <label for="titre">Titre :</label>
+    <input type="text" id="titre" name="titre" required>
 
-        <label for="description">Description :</label>
-        <textarea id="description" name="description" rows="3"></textarea>
+    <label for="description">Description :</label>
+    <textarea id="description" name="description" rows="3"></textarea>
 
-        <label for="categorie">Catégorie :</label>
-        <select id="categorie" name="categorie" required>
-            <option value="">-- Sélectionner --</option>
-            <option value="rapport">Rapport</option>
-            <option value="guide">Guide</option>
-            <option value="règlement">Règlement</option>
-            <option value="autre">Autre</option>
-        </select>
+    <label for="categorie">Catégorie :</label>
+    <input type="text" id="categorie" name="categorie" required placeholder="Entrez une catégorie">
 
-        <label for="categorie_autre" style="display:none;" id="label_categorie_autre">Précisez la catégorie :</label>
-        <input type="text" id="categorie_autre" name="categorie_autre" style="display:none;" placeholder="Autre catégorie">
+    <label for="fichier">Fichier :</label>
+    <input type="file" id="fichier" name="fichier" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" required>
 
-        <label for="fichier">Fichier :</label>
-        <input type="file" id="fichier" name="fichier" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" required>
-
-
-        <div class="form-buttons">
-            <button type="submit">Téléverser</button>
-            <a href="{{ route('dashboard') }}" class="btn-cancel">Annuler</a>
-        </div>
-    </form>
+    <div class="form-buttons">
+        <button type="submit">Téléverser</button>
+        <a href="{{ route('dashboard') }}" class="btn-cancel">Annuler</a>
+    </div>
+</form>
 </div>
 
 <script>

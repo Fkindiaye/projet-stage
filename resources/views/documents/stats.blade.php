@@ -69,27 +69,32 @@
     <div class="container">
         <h1>Statistiques</h1>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Indicateur</th>
-                    <th>Valeur</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nombre total de documents</td>
-                    <td><strong>{{ $totalDocuments }}</strong></td>
-                </tr>
-                <tr>
-                    <td>Nombre de documents partagés</td>
-                    <td><strong>{{ $sharedDocuments }}</strong></td>
-                </tr>
-            </tbody>
-        </table>
+<table>
+    <thead>
+        <tr>
+            <th>Indicateur</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Nombre total de documents</td>
+            <td><strong>{{ $totalDocuments }}</strong></td>
+        </tr>
+        <tr>
+            <td>Nombre de documents partagés</td>
+            <td><strong>{{ $sharedDocuments }}</strong></td>
+        </tr>
+        <tr>
+            <td>Nombre de documents archivés</td>
+            <td><strong>{{ $archivedDocuments }}</strong></td>
+        </tr>
+    </tbody>
+</table>
 
-        <a href="{{ route('dashboard') }}" class="btn-retour">Retour</a>
-    </div>
+<a href="{{ route('dashboard') }}" class="btn-retour">Retour</a>
+
+</div>
 
 </body>
 </html>

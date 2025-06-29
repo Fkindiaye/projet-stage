@@ -40,6 +40,8 @@ Route::get('/accueil', function () {
 })->middleware('auth')->name('accueil');
 
 Route::put('/documents/archive-multiple', [DocumentController::class, 'archiveMultiple'])->name('documents.archiveMultiple');
+Route::get('/mes-archives', [DocumentController::class, 'mesArchives'])->name('documents.mes_archives');
+Route::put('/documents/{id}/desarchiver', [DocumentController::class, 'desarchiver'])->name('documents.desarchiver');
 
 
 // Documents
@@ -52,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/documents/{document}', [DocumentController::class, 'destroy'])->name('documents.destroy');
     Route::get('/documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
     Route::put('/documents/{document}/restore', [DocumentController::class, 'restore'])->name('documents.restore');
-});
+   });
 
 // Autres vues protégées
 Route::get('/archives', [DocumentController::class, 'archives'])->name('archives')->middleware('auth');

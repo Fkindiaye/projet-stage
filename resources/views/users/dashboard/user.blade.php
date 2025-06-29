@@ -226,7 +226,7 @@
         <h2>Tableau de bord Utilisateur</h2>
         <span class="nav-item active"><span class="emoji">🏠</span> Accueil</span>
         <a href="{{ route('documents.index') }}"><span class="emoji">📄</span> Documents</a>
-        <a href="{{ route('documents.stats') }}" class="nav-item">
+        <a href="{{ route('documents.mes_archives') }}"><span class="emoji">🗄️</span> Archives</a>
         <a href="{{ route('documents.stats') }}" class="nav-item"><span class="emoji">📊</span>Statistiques</a>
         <a href="{{ route('déconnexion') }}"><span class="emoji">🚪</span> Déconnexion</a>
     </div>
